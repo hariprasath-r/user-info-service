@@ -1,0 +1,4 @@
+spring:
+  application.name: user-info-service
+
+server.port: 8100
