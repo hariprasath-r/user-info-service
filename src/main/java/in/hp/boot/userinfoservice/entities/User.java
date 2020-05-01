@@ -15,7 +15,7 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String fname;
     private String lname;
     private String email;

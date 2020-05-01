@@ -1,9 +1,9 @@
 package in.hp.boot.userinfoservice.controllers;
 
 import in.hp.boot.userinfoservice.entities.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import in.hp.boot.userinfoservice.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +12,26 @@ import java.util.List;
 @RequestMapping("v1/users")
 public class UserController {
 
+    @Autowired
+    UserService userService;
+
     @GetMapping
     public List<User> getUsers() {
-        return Arrays.asList(new User(), new User());
+        return userService.getUsers();
+    }
+
+    @PostMapping
+    public void addUser(@RequestBody User user) {
+        userService.saveUser(user);
+    }
+
+    @PutMapping
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
+    }
+
+    @DeleteMapping
+    public void deleteUser(@RequestBody User user) {
+        userService.deleteUser(user);
     }
 }
