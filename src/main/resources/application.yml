@@ -1,4 +1,13 @@
+server:
+  port: 8100
+  error.include-stacktrace: never
+
 spring:
   application.name: user-info-service
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
 
-server.port: 8100
+management.endpoints.web.exposure.include: "*"
