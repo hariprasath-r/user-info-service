@@ -19,6 +19,11 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @GetMapping("/{email}")
+    public User getUserByEmail(@PathVariable String email) {
+        return userService.getUserByEmail(email);
+    }
+
     @PostMapping
     public void addUser(@RequestBody User user) {
         userService.saveUser(user);

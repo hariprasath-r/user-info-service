@@ -30,6 +30,7 @@ public class User {
     private String lname;
 
     @ApiModelProperty(name = "User Email ID", required = true, position = 2, example = "abc@xyz.com")
+    @Column(unique = true)
     private String email;
 
     @ApiModelProperty(name = "User Date Of Birth", required = true, position = 3, example = "1995-08-24")

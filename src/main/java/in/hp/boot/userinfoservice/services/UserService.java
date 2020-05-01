@@ -17,7 +17,11 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getUser(String fname, String lname) {
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public User getUserByFnameLname(String fname, String lname) {
         return userRepository.findByUserFnameAndLname(fname, lname);
     }
 
