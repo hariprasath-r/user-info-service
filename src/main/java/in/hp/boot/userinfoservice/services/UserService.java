@@ -3,7 +3,6 @@ package in.hp.boot.userinfoservice.services;
 import in.hp.boot.userinfoservice.entities.User;
 import in.hp.boot.userinfoservice.exceptions.ResourceNotFoundException;
 import in.hp.boot.userinfoservice.repositories.UserRepository;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
