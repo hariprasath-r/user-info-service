@@ -3,6 +3,7 @@ package in.hp.boot.userinfoservice.controllers;
 import in.hp.boot.userinfoservice.entities.User;
 import in.hp.boot.userinfoservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,8 +35,8 @@ public class UserController {
         userService.updateUser(user);
     }
 
-    @DeleteMapping
-    public void deleteUser(@RequestBody User user) {
-        userService.deleteUser(user);
+    @DeleteMapping("{email}")
+    public void deleteUser(@PathVariable String email) {
+        userService.deleteUserByEmail(email);
     }
 }

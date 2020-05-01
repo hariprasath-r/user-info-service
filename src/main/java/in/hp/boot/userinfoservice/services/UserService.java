@@ -21,6 +21,12 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    /**
+     * Will later be developed if needed
+     * @param fname
+     * @param lname
+     * @return
+     */
     public User getUserByFnameLname(String fname, String lname) {
         return userRepository.findByUserFnameAndLname(fname, lname);
     }
@@ -30,10 +36,11 @@ public class UserService {
     }
 
     public void updateUser(User user) {
+        user.setId(getUserByEmail(user.getEmail()).getId());
         userRepository.save(user);
     }
 
-    public void deleteUser(User user) {
-        userRepository.delete(user);
+    public void deleteUserByEmail(String email) {
+        userRepository.delete(getUserByEmail(email));
     }
 }
