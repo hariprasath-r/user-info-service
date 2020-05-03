@@ -26,7 +26,7 @@ public class UserService {
     public User getUserByEmail(String email) {
         User user = userRepository.findByEmail(email);
         if (!Objects.nonNull(user)) {
-            throw new ResourceNotFoundException(email);
+            throw new ResourceNotFoundException("User:: " + email);
         }
         return user;
     }
