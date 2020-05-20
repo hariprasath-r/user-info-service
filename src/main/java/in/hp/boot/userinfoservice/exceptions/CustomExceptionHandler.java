@@ -1,5 +1,6 @@
 package in.hp.boot.userinfoservice.exceptions;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Date;
 
+@Slf4j
 @RestController
 @RestControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
@@ -20,6 +22,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
         GenericException genericException = new GenericException(
                 new Date().toString(), ex.getMessage(), request.getDescription(false));
+        log.error("Exception handleAllException: [{}]", genericException);
         return new ResponseEntity<>(genericException, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -28,6 +31,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         GenericException genericException = new GenericException(
                 new Date().toString(), ex.getMessage(), request.getDescription(false));
 //        return new ResponseEntity<>(genericException, HttpStatus.NOT_FOUND);
+        log.error("Exception ResourceNotFoundException: [{}]", genericException);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(genericException);
     }
 
@@ -37,6 +41,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         GenericException genericException = new GenericException(
                 new Date().toString(), "Validation failed for input.", ex.getBindingResult().toString()
         );
+        log.error("Exception handleMethodArgumentNotValid: [{}]", genericException);
         return new ResponseEntity<>(genericException, status);
     }
 }

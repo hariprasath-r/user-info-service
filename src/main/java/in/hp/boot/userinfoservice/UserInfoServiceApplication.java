@@ -10,8 +10,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 public class UserInfoServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserInfoServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UserInfoServiceApplication.class, args);
+    }
 
 }
