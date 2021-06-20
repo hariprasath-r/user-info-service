@@ -1,5 +1,8 @@
 package in.hp.boot.userinfoservice.exceptions;
 
+import lombok.ToString;
+
+@ToString
 public class GenericException {
     private final String timestamp;
     private final String message;
@@ -11,7 +14,9 @@ public class GenericException {
         this.details = details;
     }
 
-    public String getTimestamp() { return timestamp; }
+    public String getTimestamp() {
+        return timestamp;
+    }
 
     public String getMessage() {
         return message;
